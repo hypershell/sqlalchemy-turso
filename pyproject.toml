@@ -1,9 +1,22 @@
 [project]
 name = "libsql-sqlalchemy"
 version = "0.1.0"
-description = "Add your description here"
+description = "SQLAlchemy dialect for libSQL"
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Levy Albuquerque", email = "levy@turso.tech" },
+]
+keywords = ["sqlalchemy", "libsql", "database", "dialect"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+]
 dependencies = [
     "libsql-experimental>=0.0.47",
     "sqlalchemy>=2.0.0",
@@ -14,6 +27,12 @@ dev = [
     "pytest>=8.3.5",
     "pytest-cov>=4.1.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/tursodatabase/libsql-sqlalchemy"
+Documentation = "https://github.com/tursodatabase/libsql-sqlalchemy#readme"
+Repository = "https://github.com/tursodatabase/libsql-sqlalchemy.git"
+Issues = "https://github.com/tursodatabase/libsql-sqlalchemy/issues"
 
 [project.entry-points."sqlalchemy.dialects"]
 "sqlite.libsql" = "libsql_sqlalchemy:SQLiteDialect_libsql"
