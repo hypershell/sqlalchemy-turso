@@ -1,0 +1,12 @@
+.direnv
+
+*.egg-info/
+*.egg
+__pycache__/
+*.py[cod]
+*$py.class
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
