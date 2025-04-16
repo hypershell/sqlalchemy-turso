@@ -9,7 +9,7 @@ dependencies = [
     "sqlalchemy>=2.0.0",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "pytest>=8.3.5",
     "pytest-cov>=4.1.0",
