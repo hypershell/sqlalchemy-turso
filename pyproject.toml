@@ -20,12 +20,14 @@ classifiers = [
 dependencies = [
     "libsql-experimental>=0.0.47",
     "sqlalchemy>=2.0.0",
+    "greenlet>=3.0.3",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.3.5",
     "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.5",
 ]
 
 [project.urls]
@@ -36,3 +38,4 @@ Issues = "https://github.com/tursodatabase/libsql-sqlalchemy/issues"
 
 [project.entry-points."sqlalchemy.dialects"]
 "sqlite.libsql" = "libsql_sqlalchemy:SQLiteDialect_libsql"
+"sqlite.aiolibsql" = "libsql_sqlalchemy:SQLiteDialect_aiolibsql"
