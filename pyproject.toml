@@ -37,5 +37,5 @@ Repository = "https://github.com/tursodatabase/libsql-sqlalchemy.git"
 Issues = "https://github.com/tursodatabase/libsql-sqlalchemy/issues"
 
 [project.entry-points."sqlalchemy.dialects"]
-"sqlite.libsql" = "libsql_sqlalchemy:SQLiteDialect_libsql"
-"sqlite.aiolibsql" = "libsql_sqlalchemy:SQLiteDialect_aiolibsql"
+"sqlite.libsql" = "sqlalchemy_libsql:SQLiteDialect_libsql"
+"sqlite.aiolibsql" = "sqlalchemy_libsql:SQLiteDialect_aiolibsql"

@@ -28,4 +28,4 @@ jobs:
         
     - name: Run tests
       run: |
-        pytest --cov=libsql_sqlalchemy tests/ 
+        pytest --cov=sqlalchemy_libsql tests/ 

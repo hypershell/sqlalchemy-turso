@@ -1,4 +1,4 @@
-from libsql_sqlalchemy.libsql import SQLiteDialect_libsql
+from sqlalchemy_libsql.libsql import SQLiteDialect_libsql
 
 
 class SQLiteDialect_aiolibsql(SQLiteDialect_libsql):
