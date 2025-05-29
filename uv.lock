@@ -196,7 +196,7 @@ wheels = [
 
 [[package]]
 name = "sqlalchemy-libsql"
-version = "0.2.0rc1"
+version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "greenlet" },
