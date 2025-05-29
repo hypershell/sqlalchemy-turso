@@ -19,12 +19,15 @@
           buildInputs = [
             ruff
             uv
-            poetry
             python312
             python312Packages.pip
             python312Packages.virtualenv
             python312Packages.pytest
             python312Packages.pyperf
+
+            # to debug `libsql-experimental`
+            maturin
+            cmake
           ];
           shellHook = ''
             virtualenv .venv
