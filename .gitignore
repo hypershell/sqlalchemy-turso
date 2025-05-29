@@ -1,4 +1,6 @@
 .direnv
+test.db*
+test_embedded.db*
 
 *.egg-info/
 *.egg

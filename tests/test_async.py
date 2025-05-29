@@ -17,15 +17,44 @@ class User(Base):
     email = Column(String)
 
 
-@pytest_asyncio.fixture
-async def engine():
-    engine = create_async_engine(
-        "sqlite+aiolibsql://",
-        poolclass=AsyncAdaptedQueuePool,
-    )
+@pytest_asyncio.fixture(params=["memory", "file", "remote", "embedded"])
+async def engine(request):
+    import os
+
+    match request.param:
+        case "file":
+            if os.path.exists("test.db"):
+                os.remove("test.db")
+            engine = create_async_engine(
+                "sqlite+aiolibsql:///test.db",
+                poolclass=AsyncAdaptedQueuePool,
+            )
+        case "remote" if os.getenv("TURSO_DATABASE_URL"):
+            engine = create_async_engine(
+                f"sqlite+aiolibsql://{os.getenv('TURSO_DATABASE_URL')}?secure=false",
+                poolclass=AsyncAdaptedQueuePool,
+                connect_args={
+                    "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+                },
+            )
+        case "embedded" if os.getenv("TURSO_DATABASE_URL"):
+            if os.path.exists("test_embedded.db"):
+                os.remove("test_embedded.db")
+            engine = create_async_engine(
+                "sqlite+aiolibsql:///test_embedded.db",
+                poolclass=AsyncAdaptedQueuePool,
+                connect_args={
+                    "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+                    "sync_url": f"http://{os.getenv('TURSO_DATABASE_URL')}",
+                },
+            )
+        case "memory" | _:
+            engine =  create_async_engine(
+                "sqlite+aiolibsql://",
+                poolclass=AsyncAdaptedQueuePool,
+            )
     yield engine
     await engine.dispose()
-
 
 @pytest_asyncio.fixture
 async def session(engine):
