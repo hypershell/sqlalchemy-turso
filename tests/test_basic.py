@@ -13,9 +13,35 @@ class User(Base):
     email = Column(String)
 
 
-@pytest.fixture
-def engine():
-    return create_engine("sqlite+libsql://")
+@pytest.fixture(params=["memory", "file", "remote", "embedded"])
+def engine(request):
+    import os
+    match request.param:
+        case "memory":
+            return create_engine("sqlite+libsql://")
+        case "file":
+            if os.path.exists("test.db"):
+                os.remove("test.db")
+            return create_engine("sqlite+libsql:///test.db")
+        case "remote" if os.getenv("TURSO_DATABASE_URL"):
+            return create_engine(
+                f"sqlite+libsql://{os.getenv("TURSO_DATABASE_URL")}?secure=false",
+                connect_args={
+                    "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+                },
+            )
+        case "embedded" if os.getenv("TURSO_DATABASE_URL"):
+            if os.path.exists("test_embedded.db"):
+                os.remove("test_embedded.db")
+            return create_engine(
+                "sqlite+libsql:///test_embedded.db",
+                connect_args={
+                    "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+                    "sync_url": f"http://{os.getenv("TURSO_DATABASE_URL")}",
+                },
+            )
+        case _:
+            return create_engine("sqlite+libsql://")
 
 
 @pytest.fixture

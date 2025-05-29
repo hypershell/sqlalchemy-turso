@@ -95,45 +95,17 @@ wheels = [
 
 [[package]]
 name = "libsql-experimental"
-version = "0.0.47"
+version = "0.0.53"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/61/35/8e72f4fe9bff2fe1703f2d2a017b553fec0efdcbb3343e8a41824a283910/libsql_experimental-0.0.47.tar.gz", hash = "sha256:20fc72f5fcfbfbe889da8747c6598b87d262872b8e6c97172d461daa5b9e72fe", size = 31764 }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/85/a2c41496fa7cfbc1a85ab4933dc071bfd9cac9e8b59d9a393aeb21c75629/libsql_experimental-0.0.53.tar.gz", hash = "sha256:9a0a9b50d9a965a894c229d9ba47247aaf3f90673504816d6d85f96630211ac1", size = 31954 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/7a/46f8ec4f031c4cd6c1aba52b9fd5308054cc09c10e867b2c62bf8c6be659/libsql_experimental-0.0.47-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:0309446d028f2d26704546afc9fecc5b62410727b25e49babe42ff07d9baa189", size = 4783858 },
-    { url = "https://files.pythonhosted.org/packages/3b/48/603eaa847f2eb95212d0f18e97166cc7cdb39788e5dc164129eb51aadad7/libsql_experimental-0.0.47-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:1da6e4f0a516bb365cb1b49f0b398c733d36b0e7e9a42507ad901818b609c272", size = 4558890 },
-    { url = "https://files.pythonhosted.org/packages/50/5e/c4b573f64519087f4cf37832fee97e8a2ab236ad887709a74059a2125f43/libsql_experimental-0.0.47-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:17e6421eb4e816588c9952b7bd5823fb63e0633fc727a85eaa2aeac9eaee6c73", size = 5163603 },
-    { url = "https://files.pythonhosted.org/packages/77/13/6a13833290de0499259c56c4e7da7798b3aefd376bb116004ade9239eb1b/libsql_experimental-0.0.47-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:1694fdbe1148b197e0f39d0748384f946cb0b572385bce9df7ea0bd4fe99c0e8", size = 4783855 },
-    { url = "https://files.pythonhosted.org/packages/4d/42/f6c7e9dbd6b77d7c24ded716c8620342d2e06bc0955b88259eefab56aafc/libsql_experimental-0.0.47-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:d2cf339afc068d90f8c4f6a4de4ab31feeb956803b4f346b8c1a89419ca01cb7", size = 4558890 },
-    { url = "https://files.pythonhosted.org/packages/f4/df/3b7721859ec05422662d7982f4c18c1d1ff2c4aa8733e7814481813ce54c/libsql_experimental-0.0.47-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f24ebe077c97b2395da0812cdb61594cf21db5eb3cdd3c5f22b1f071d7d3591f", size = 5163602 },
+    { url = "https://files.pythonhosted.org/packages/db/40/5004a30f8a42014a34e3da389ed4ae8b283b128a972f8b041e1ac0f7bb5d/libsql_experimental-0.0.53-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:60ba7e60757207590dce0a3de238bd8ef07eeb886ec49c2d0b2d835e5b3d4734", size = 4846991 },
+    { url = "https://files.pythonhosted.org/packages/41/e9/d93f2ed97e27dc6d72c190b8836519dc11549cfa902bbe52299d4cacac95/libsql_experimental-0.0.53-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:a2fdc59edc8d3a8511695642254a7e50430d150aaf78a07ab1dd76adebe7a7df", size = 4613072 },
+    { url = "https://files.pythonhosted.org/packages/31/a2/d8369a6f02e915f7b3bbcf87e69257fab524012f3571c89b20befd9dcf2f/libsql_experimental-0.0.53-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9c45b53baacf8c38b215f75322579c77a9852a83bcc85848ba84fb4fb40fed83", size = 5231801 },
+    { url = "https://files.pythonhosted.org/packages/02/39/a40fbfe9586372ce4d14641bee481f502ebd3360863ade8c810d8e702018/libsql_experimental-0.0.53-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:39caa43b4a780dbd5eab173176e6a9a8f91fd832a64c85e8c39b18b9c11fa09a", size = 4846990 },
+    { url = "https://files.pythonhosted.org/packages/c2/87/85bb4a54756308359e9b62017ba0383528c86d9be089c9e7186bb2d7205b/libsql_experimental-0.0.53-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:5e0e559247f332b958ab082b0aa0d739e924f4d1d5e072aaf00b6f7f4c69a557", size = 4613070 },
+    { url = "https://files.pythonhosted.org/packages/e4/45/4aa5536df1808b72fe0a43cb3dbe2b58dff944b4e64597cfdf26f5d36f0d/libsql_experimental-0.0.53-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d4e36a632de34e4792af5501a9de969950c659e900df904c542665d1dbc8c082", size = 5231799 },
 ]
-
-[[package]]
-name = "libsql-sqlalchemy"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "greenlet" },
-    { name = "libsql-experimental" },
-    { name = "sqlalchemy" },
-]
-
-[package.optional-dependencies]
-dev = [
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "greenlet", specifier = ">=3.0.3" },
-    { name = "libsql-experimental", specifier = ">=0.0.47" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.5" },
-    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.23.5" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
-    { name = "sqlalchemy", specifier = ">=2.0.0" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "packaging"
@@ -221,6 +193,34 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/1c/cb/f38c61f7f2fd4d10494c1c135ff6a6ddb63508d0b47bccccd93670637309/sqlalchemy-2.0.40-cp313-cp313-win_amd64.whl", hash = "sha256:641ee2e0834812d657862f3a7de95e0048bdcb6c55496f39c6fa3d435f6ac6ad", size = 2104564 },
     { url = "https://files.pythonhosted.org/packages/d1/7c/5fc8e802e7506fe8b55a03a2e1dab156eae205c91bee46305755e086d2e2/sqlalchemy-2.0.40-py3-none-any.whl", hash = "sha256:32587e2e1e359276957e6fe5dad089758bc042a971a8a09ae8ecf7a8fe23d07a", size = 1903894 },
 ]
+
+[[package]]
+name = "sqlalchemy-libsql"
+version = "0.2.0rc1"
+source = { virtual = "." }
+dependencies = [
+    { name = "greenlet" },
+    { name = "libsql-experimental" },
+    { name = "sqlalchemy" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "greenlet", specifier = ">=3.0.3" },
+    { name = "libsql-experimental", specifier = ">=0.0.53" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.5" },
+    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.23.5" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
+    { name = "sqlalchemy", specifier = ">=2.0.0" },
+]
+provides-extras = ["dev"]
 
 [[package]]
 name = "typing-extensions"
