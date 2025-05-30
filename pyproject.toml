@@ -3,7 +3,7 @@ name = "sqlalchemy-libsql"
 version = "0.2.0"
 description = "SQLAlchemy dialect for libSQL"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.8"
 license = { text = "MIT" }
 authors = [
     { name = "Levy Albuquerque", email = "levy@turso.tech" },
