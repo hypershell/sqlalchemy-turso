@@ -31,6 +31,53 @@
 
 ---
 
+## Examples
+
+#### Embedded Replica
+
+```python
+import os
+from sqlalchemy import create_engine
+
+engine = create_engine(
+     "sqlite+libsql:///embedded.db",
+     connect_args={
+         "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+         "sync_url": f"{os.getenv("TURSO_DATABASE_URL")}",
+     },
+)
+```
+
+#### Remote Database
+
+```python
+import os
+from sqlalchemy import create_engine
+
+engine = create_engine(
+    f"sqlite+libsql://{os.getenv("TURSO_DATABASE_URL")}?secure=true",
+    connect_args={
+        "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
+    },
+)
+```
+
+#### In-Memory Database
+
+```python
+from sqlalchemy import create_engine
+
+engine = create_engine("sqlite+libsql://")
+```
+
+#### Local Database
+
+```python
+from sqlalchemy import create_engine
+
+engine = create_engine("sqlite+libsql:///local.db")
+```
+
 ## Documentation
 
 1. [Turso Quickstart](https://docs.turso.tech/quickstart) &mdash; Learn how create and connect your first database.
@@ -47,3 +94,4 @@ Learn more about what you can do with Turso:
 - [Platform API](https://docs.turso.tech/features/platform-api)
 - [Branching](https://docs.turso.tech/features/branching)
 - [Point-in-Time Recovery](https://docs.turso.tech/features/point-in-time-recovery)
+
