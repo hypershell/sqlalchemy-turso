@@ -1,14 +1,14 @@
 [project]
-name = "sqlalchemy-libsql"
+name = "sqlalchemy-turso"
 version = "0.2.0"
-description = "SQLAlchemy dialect for libSQL"
+description = "SQLAlchemy dialect for Turso"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
     { name = "Levy Albuquerque", email = "levy@turso.tech" },
 ]
-keywords = ["sqlalchemy", "libsql", "database", "dialect"]
+keywords = ["sqlalchemy", "turso", "database", "dialect"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -18,16 +18,16 @@ classifiers = [
     "Topic :: Database",
 ]
 dependencies = [
-    "libsql-experimental>=0.0.53",
+    "pyturso>=0.1.4",
     "sqlalchemy>=2.0.0",
     "greenlet>=3.0.3",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=8.3.5",
-    "pytest-cov>=4.1.0",
-    "pytest-asyncio>=0.23.5",
+    "pytest-cov>=5.0.0",
+    "pytest-asyncio>=0.24.0",
 ]
 
 [project.urls]
@@ -37,5 +37,5 @@ Repository = "https://github.com/tursodatabase/libsql-sqlalchemy.git"
 Issues = "https://github.com/tursodatabase/libsql-sqlalchemy/issues"
 
 [project.entry-points."sqlalchemy.dialects"]
-"sqlite.libsql" = "sqlalchemy_libsql:SQLiteDialect_libsql"
-"sqlite.aiolibsql" = "sqlalchemy_libsql:SQLiteDialect_aiolibsql"
+"sqlite.turso" = "sqlalchemy_turso:SQLiteDialect_turso"
+"sqlite.aioturso" = "sqlalchemy_turso:SQLiteDialect_aioturso"

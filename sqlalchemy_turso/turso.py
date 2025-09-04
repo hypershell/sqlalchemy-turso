@@ -3,7 +3,7 @@ import urllib.parse
 
 from sqlalchemy import util
 from sqlalchemy.dialects.sqlite.pysqlite import SQLiteDialect_pysqlite
-from libsql_experimental import Connection
+from turso import Connection
 
 
 def _build_connection_url(url, query, secure):
@@ -40,24 +40,27 @@ def _build_connection_url(url, query, secure):
     )
 
 
-class SQLiteDialect_libsql(SQLiteDialect_pysqlite):
-    driver = "libsql"
+class SQLiteDialect_turso(SQLiteDialect_pysqlite):
+    driver = "turso"
     # need to be set explicitly
     supports_statement_cache = SQLiteDialect_pysqlite.supports_statement_cache
 
     @classmethod
     def import_dbapi(cls):
-        import libsql_experimental as libsql
-
-        return libsql
+        import turso
+        from sqlite3 import Error
+        # NOTE: faked attributes for the sake of sqlalchemy
+        turso.paramstyle = 'qmark'
+        turso.sqlite_version_info = (3, 47, 1)
+        turso.Error = Error  # Add Error class that SQLAlchemy expects
+        return turso
 
     def on_connect(self):
-        import libsql_experimental as libsql
-
+        import turso
         sqlite3_connect = super().on_connect()
 
         def connect(conn):
-            # LibSQL: there is no support for create_function()
+            # turso: there is no support for create_function()
             if isinstance(conn, Connection):
                 return
             return sqlite3_connect(conn)
@@ -72,17 +75,17 @@ class SQLiteDialect_libsql(SQLiteDialect_pysqlite):
             ("detect_types", int),
             ("check_same_thread", bool),
             ("cached_statements", int),
-            ("secure", bool),  # LibSQL extra, selects between ws and wss
+            ("secure", bool),  # turso extra, selects between ws and wss
         )
         opts = url.query
-        libsql_opts = {}
+        turso_opts = {}
         for key, type_ in pysqlite_args:
-            util.coerce_kw_type(opts, key, type_, dest=libsql_opts)
+            util.coerce_kw_type(opts, key, type_, dest=turso_opts)
 
         if url.host:
-            libsql_opts["uri"] = True
+            turso_opts["uri"] = True
 
-        if libsql_opts.get("uri", False):
+        if turso_opts.get("uri", False):
             uri_opts = dict(opts)
             # here, we are actually separating the parameters that go to
             # sqlite3/pysqlite vs. those that go the SQLite URI.  What if
@@ -96,16 +99,46 @@ class SQLiteDialect_libsql(SQLiteDialect_pysqlite):
             for key, type_ in pysqlite_args:
                 uri_opts.pop(key, None)
 
-            secure = libsql_opts.pop("secure", False)
+            secure = turso_opts.pop("secure", False)
             connect_url = _build_connection_url(url, uri_opts, secure)
         else:
             connect_url = url.database or ":memory:"
             if connect_url != ":memory:":
                 connect_url = os.path.abspath(connect_url)
 
-        libsql_opts.setdefault("check_same_thread", not self._is_url_file_db(url))
+        # Remove parameters that turso.connect() doesn't accept
+        # turso.connect() only accepts the path argument
+        turso_opts.pop("check_same_thread", None)
+        turso_opts.pop("uri", None)
+        turso_opts.pop("timeout", None)
+        turso_opts.pop("isolation_level", None)
+        turso_opts.pop("detect_types", None)
+        turso_opts.pop("cached_statements", None)
+        # Note: we already popped "secure" above
 
-        return ([connect_url], libsql_opts)
+        # turso.connect() only accepts path, so we return empty dict for kwargs
+        return [connect_url], {}
+
+    def get_isolation_level(self, dbapi_connection):
+        """Override to avoid PRAGMA read_uncommitted which Turso doesn't support.
+        
+        Turso doesn't support isolation levels, so we return None.
+        """
+        return None
+
+    def get_default_isolation_level(self, dbapi_connection):
+        """Override to avoid PRAGMA read_uncommitted which Turso doesn't support.
+        
+        Turso doesn't support isolation levels, so we return None.
+        """
+        return None
+
+    def set_isolation_level(self, dbapi_connection, level):
+        """Override to avoid setting isolation level which Turso doesn't support.
+        
+        Turso doesn't support changing isolation levels, so this is a no-op.
+        """
+        pass
 
 
-dialect = SQLiteDialect_libsql
+dialect = SQLiteDialect_turso

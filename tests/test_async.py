@@ -26,12 +26,12 @@ async def engine(request):
             if os.path.exists("test.db"):
                 os.remove("test.db")
             engine = create_async_engine(
-                "sqlite+aiolibsql:///test.db",
+                "sqlite+aioturso:///test.db",
                 poolclass=AsyncAdaptedQueuePool,
             )
         case "remote" if os.getenv("TURSO_DATABASE_URL"):
             engine = create_async_engine(
-                f"sqlite+aiolibsql://{os.getenv('TURSO_DATABASE_URL')}?secure=false",
+                f"sqlite+aioturso://{os.getenv('TURSO_DATABASE_URL')}?secure=false",
                 poolclass=AsyncAdaptedQueuePool,
                 connect_args={
                     "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
@@ -41,7 +41,7 @@ async def engine(request):
             if os.path.exists("test_embedded.db"):
                 os.remove("test_embedded.db")
             engine = create_async_engine(
-                "sqlite+aiolibsql:///test_embedded.db",
+                "sqlite+aioturso:///test_embedded.db",
                 poolclass=AsyncAdaptedQueuePool,
                 connect_args={
                     "auth_token": os.getenv("TURSO_AUTH_TOKEN"),
@@ -50,7 +50,7 @@ async def engine(request):
             )
         case "memory" | _:
             engine =  create_async_engine(
-                "sqlite+aiolibsql://",
+                "sqlite+aioturso://",
                 poolclass=AsyncAdaptedQueuePool,
             )
     yield engine
